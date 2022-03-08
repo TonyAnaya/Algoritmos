@@ -5,9 +5,7 @@
 //aaba -> 2a1b1a
 
 const string = "aaadggnnrrrkkscccc"
-
 const abc = (string) =>{
-
     if(string.length == 0){
         return "Error de entrada"
     }
@@ -65,7 +63,6 @@ const rev = (array,target) => {
 }
 console.log("Ejercicio número 2")
 console.log(rev(array,target))
-
 //Algorithm
 //Busqueda Binaria
 //3000//9000//1000000
@@ -73,20 +70,15 @@ console.log(rev(array,target))
 //regresa la posicion de la persona que pesa el objetivo
 //Target 80 = 7
 //f(80,[48,53,57,58,60,70,75,80,81,99,100]) = 7
-
 let numeGran = 1024
 let arreGran = [1]
 for (let j = 1; j < (numeGran); j++) {
     arreGran.push(arreGran[j-1] + 1 + Math.floor(Math.random() * 9));
 }
 //console.log(arreGran)
-
 console.log("Ejercicio número 3")
-
 //          0  1  2  3  4  5  6  7   8   9  10  11  12  13  14  15  16
 let temp = [22,42,62,73,84,86,88,123,234,237]
-
-
 let encontrado = false;
 //lenght 17
 let arre = arreGran;
@@ -124,7 +116,6 @@ do{
         encontrado=true
         console.log("No se encontro el número")
     }
-
 }while(encontrado != true) 
 console.timeEnd('loop');
 
@@ -132,26 +123,23 @@ console.timeEnd('loop');
 //Bubble Sort
 //[99,53,100,75,58,70,81,60,57,80,48] => [48,53,57,58,60,70,75,80,81,99,100]
 let arry =[99,53,100,75,58,70,81,60,57,80,48]
-
 function bubbleSort(array) {
-	let swapped = true;
-	do {
-		swapped = false;
-		for (let j = 0; j < array.length; j++) {
-			if (array[j] > array[j + 1]) {
-				let temp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
-				swapped = true;
-			}
-		}
-	} while (swapped);
+    let swapped = true;
+    do {
+        swapped = false;
+        for (let j = 0; j < array.length; j++) {
+            if (array[j] > array[j + 1]) {
+                let temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+                swapped = true;
+            }
+        }
+    } while (swapped);
     console.log(array)
-	return array;
+    return array;
 }
 bubbleSort(arry)
-
-
 
 //FizzBuzz 
 // Fizz => (n % 3) = 0
@@ -199,7 +187,6 @@ function searchSuggestions(repository, customerQuery) {
                 response.push(repository[i])
                 response.sort()
             }
-            
         }
     }
     if (response.length > 3){
@@ -229,21 +216,18 @@ function promo(shoppingCart, patron) {
         let temp = []
         for (let j = i; j < (patron.length + i); j++) {
             temp.push(shoppingCart[j])
-            
         }
         patron_temp[comodin] = temp[comodin]
         if (JSON.stringify(temp) == JSON.stringify(patron_temp)) {
             console.log("Se encontro la coincidencia para aplicar promocion " + temp)
-            
         }
     }
-    
 }
 let compra= ["apple", "carrot", "water", "pineapple", "watermelon", "banana", "banana", "apple", "carrot", "water"]
 let patron = ["banana", "banana", "apple", "anything", "water"]
 promo(compra,patron)
 
-
+//Find the missing munber in an unsorted array 
 function MissingNumber(missing) {
     missing = missing.sort(function(a, b){return a - b})
     let encontrado = false
@@ -261,3 +245,60 @@ function MissingNumber(missing) {
 }
 let missingNum=[6,1,7,4,3,5,10,8,2,9]
 MissingNumber(missingNum)
+
+
+//Determine if the sum of two integers is equal to the given value
+
+function suma(val, conjunto) {
+    let result = []
+    let subRes = []
+    for (let i = 0; i < conjunto.length; i++) {
+        for (let j = i; j < conjunto.length; j++) {
+            if(i != j){
+                let sumita = conjunto[i] + conjunto[j]
+                if(sumita === val){
+                    subRes = [conjunto[i],conjunto[j]]
+                    result.push(subRes)
+                }
+            }
+        }
+    }
+    for (let k = 0; k < result.length; k++) {
+        console.log(val + " = " + result[k][0] + " + " + result[k][1])
+    }
+    if(!subRes[0]){
+        console.log("No hay valores que sumen " + val)
+    }
+}
+let valor = 10
+let conjun = [5,7,1,2,8,4,3]
+suma(valor, conjun)
+
+//Merge 2 sorted arrays into one sorted array
+function sortArray(arre1, arre2) {
+    let result = []
+    let indi1 = 0
+    let indi2 = 0
+    for (let i = 0; i < (arre1.length + arre2.length + 1); i++) {
+        if(arre1[indi1] < arre2[indi2]){
+            result.push(arre1[indi1])
+            indi1 = indi1 + 1
+        }
+        if(arre1[indi1] > arre2[indi2]){
+            result.push(arre2[indi2])
+            indi2 = indi2 + 1
+        }
+        if(!arre1[indi1] && arre2[indi2]){
+            result.push(arre2[indi2])
+            indi2 = indi2 + 1
+        }
+        if(!arre2[indi2] && arre1[indi1]){
+            result.push(arre1[indi1])
+            indi1 = indi1 + 1
+        }
+    }
+    console.log(result)
+}
+let conjunto1 = [1, 2, 4, 8, 15, 19]
+let conjunto2 = [7, 9, 10, 16, 29]
+sortArray(conjunto1, conjunto2)
