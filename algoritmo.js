@@ -242,3 +242,22 @@ function promo(shoppingCart, patron) {
 let compra= ["apple", "carrot", "water", "pineapple", "watermelon", "banana", "banana", "apple", "carrot", "water"]
 let patron = ["banana", "banana", "apple", "anything", "water"]
 promo(compra,patron)
+
+
+function MissingNumber(missing) {
+    missing = missing.sort(function(a, b){return a - b})
+    let encontrado = false
+    let indice = 0
+    let n = missing.length + 1
+    for (let i = 0; i < missing.length; i++) {
+        if(missing[i] != (i+1)){
+            if(!encontrado){
+                encontrado = true
+                indice = i + 1
+            }
+        }
+    }
+    console.log("n = " + n + " missing number = " + indice)
+}
+let missingNum=[6,1,7,4,3,5,10,8,2,9]
+MissingNumber(missingNum)
