@@ -153,13 +153,16 @@ bubbleSort(arry)
 
 
 
-
+//FizzBuzz 
+// Fizz => (n % 3) = 0
+// Buzz => (n % 5) = 0
+// FizzBuzz => (n % 3) = 0 && (n % 5) = 0
 function fizzBuzz(n) {
     // Write your code here
     
     for(let i = 1; i < n+1; i++){
         if(i%3 === 0 && i%5 != 0){
-            console.log("fizz")
+            console.log("Fizz")
         }
         if(i%5 == 0 && i%3 != 0){
             console.log("Buzz")
@@ -174,6 +177,8 @@ function fizzBuzz(n) {
 }
 fizzBuzz(15)
 
+
+//print index values of a for inside a for
 function forFor(n) {
     console.log("i : j")
     for (let i = 0; i < n; i++) {
@@ -184,7 +189,7 @@ function forFor(n) {
 }
 forFor(5)
 
-
+//Search the 3 top suggestions deppending on the input
 function searchSuggestions(repository, customerQuery) {
     let response =[]
     let result =[]
@@ -213,6 +218,8 @@ let query3 = "mous"
 let query4 = "mouse"
 searchSuggestions(repositorio,query4)
 
+
+//Look if a shopping cart array contains an specific sub-array
 function promo(shoppingCart, patron) {
     let patron_temp = patron
     if(patron.includes("anything")){
