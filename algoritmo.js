@@ -302,3 +302,157 @@ function sortArray(arre1, arre2) {
 let conjunto1 = [1, 2, 4, 8, 15, 19]
 let conjunto2 = [7, 9, 10, 16, 29]
 sortArray(conjunto1, conjunto2)
+
+//Reverse words in a sentence
+function reverse(sentence) {
+    let result = ""
+    let arre = (sentence.split(" "))
+    arre.reverse()
+    for (let i = 0; i< arre.length; i++) {
+      result = result + " " + arre[i]
+    }
+    console.log(result)
+}
+let sentence = "Hola mi nombre es Tony y soy muy sexy"
+reverse(sentence)
+
+
+//How many ways can you make change with coins and a total amount
+let denom = [1,2,5]
+let cant = 7
+function cambio(denominations, amount) {
+    let solution = [];
+    for (let i = 0; i < amount + 1; i++) {
+      solution[i] = 0;
+    }
+    solution[0] = 1;
+    for (let j = 0; j < denominations.length; j++) {
+      for (let i = denominations[j]; i < amount + 1; i++) {
+        solution[i] += solution[i - denominations[j]];
+      }
+    }
+    console.log(solution[solution.length - 1])
+    console.log("solveCoinChange([" + String(denominations) + '], ' + String(amount) + ') = ' + solution[solution.length - 1])
+}
+cambio(denom, cant)
+
+//Find Kth permutation
+
+let factorial = function(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+};
+
+let find_kth_permutation = function(v, k, result) {
+    if (!v || v.length === 0) {
+        return;
+    }
+
+    let n = v.length;
+    // count is number of permutations starting with first digit
+    let count = factorial(n - 1);
+    let selected = Math.floor((k - 1) / count);
+    result[0] += '' + v[selected];
+    v.splice(selected, 1);
+    k = k - (count * selected);
+
+    find_kth_permutation(v, k, result);
+};
+
+let get_permutation = function(n, k) {
+    let v = [];
+    for (let i = 0; i < n; i++) {
+        v.push(i + 1);
+    }
+    let result = [''];
+    find_kth_permutation(v, k, result);
+    return result[0];
+};
+
+console.log("");
+console.log("");
+console.log("+++++++++++++++++++++++++++++++++++++++");
+console.log("Find Kth Permutation");
+console.log("---------------------------------------");
+let x = 3;
+let n = factorial(x);
+for (let i = 1; i <= n; i++) {
+    let temp = get_permutation(x, i);
+    console.log(i + "th permutation = ", temp);
+}
+
+
+let ratings = [4,3,5,4,3]
+function countDecreasingRatings(ratings) {
+    let result = []
+    let temp = []
+    for (let i = 0; i < ratings.length; i++) {
+        result.push(ratings[i])
+        for (let j = i; j < ratings.length; j++) {
+            if(ratings[j] != ratings[j+1]+1){
+                if(temp.length > 1){
+                    result.push(temp)
+                }
+                temp=[]
+            }
+            if(!result.includes(temp)){
+                
+                temp.push(ratings[j])
+            }
+
+            if(ratings[j] === ratings[j+1]+1){
+                temp.push(ratings[j+1])
+            }
+        }
+    }
+    console.log(result)
+    console.log(result.length)
+    console.log("")
+    console.log("")
+    console.log("")
+}
+countDecreasingRatings(ratings)
+
+/*
+if(ratings[i] === (ratings[i-1]-1) || !ratings[i-1]){
+    temp.push(ratings[i])
+    console.log(i + " - " + temp)
+}
+if(ratings[i] ===(ratings[i-1]-1) && ratings[i] === ratings[i+1]+1){
+
+    temp.push(ratings[i])
+}
+
+if(ratings[i] != ratings[i-1]-1 && !result.includes(temp)){
+    result.push(temp)
+    temp = []
+}
+if (i== ratings.length -1){
+    result.push(temp)
+}*/
+
+
+let password = "test"
+function strength(pass) {
+    let res = 0
+    for (let i = 0; i <= pass.length; i++) {
+        for (let j = i; j <= pass.length; j++) {
+            let temp = pass
+            temp = temp.slice(i,j)
+            if(temp){
+                let letras = ""
+                for(let l = 0; l < temp.length; l++){
+                    if(!letras.includes(temp[l])){
+                        letras = letras + temp[l]
+                    }
+                }
+                res = res + letras.length
+            }
+        }
+        
+    }
+    console.log(res)
+}
+strength(password)
