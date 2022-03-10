@@ -383,7 +383,7 @@ for (let i = 1; i <= n; i++) {
 }
 
 
-let ratings = [2,1,3,2,5,4,3,2,1,6,4,3]
+let ratings = [2,1,3,2,5,4,3,6,4,3]
 function countDecreasingRatings(ratings) {
     let result = []
     let temp = []
@@ -416,7 +416,7 @@ function countDecreasingRatings(ratings) {
 countDecreasingRatings(ratings)
 
 
-let password = "test"
+let password = "prueba"
 function strength(pass) {
     let res = 0
     for (let i = 0; i <= pass.length; i++) {
@@ -433,8 +433,39 @@ function strength(pass) {
                 res = res + letras.length
             }
         }
-        
     }
-    console.log(res)
+    console.log("La calificacion de seguridad de '" + pass + "' es de: " + res)
 }
 strength(password)
+
+let patternArray = [2,4,1,2,1,5,4,1,2,1]
+function pattern(array) {
+    let subarr=[]
+    let repeatedArrays=[]
+    let repeatedArraysCount=[]
+
+    for (let i = 0; i <= array.length; i++) {
+        for (let j = i; j <= array.length; j++) {
+            let temp = array
+            temp = temp.slice(i,j)
+            if(temp[0]){
+                if(JSON.stringify(subarr).includes(JSON.stringify(temp))){
+                    if(!JSON.stringify(repeatedArrays).includes(JSON.stringify(temp))){
+                        repeatedArrays.push(temp)
+                        repeatedArraysCount.push(1)
+                    }
+                    let indi = repeatedArrays.findIndex((n)=> JSON.stringify(n) === JSON.stringify(temp))
+
+                    repeatedArraysCount[indi] = repeatedArraysCount[indi] + 1
+                }
+                subarr.push(temp)
+            }
+        }
+    }
+    console.log(array)
+    for (let l = 0; l < repeatedArrays.length; l++) {
+        console.log("El subconjunto '[" + repeatedArrays[l] + "]' se encuentra " + repeatedArraysCount[l] + " veces en el arreglo original")
+        
+    }
+}
+pattern(patternArray)
