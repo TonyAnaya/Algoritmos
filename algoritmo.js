@@ -26,8 +26,8 @@ const abc = (string) =>{
     return salida
 }
 
-console.log("Ejercicio número 1")
 console.log(abc(string));
+console.log("")
 
 //Algorithm
 //Inversos a 100
@@ -61,8 +61,8 @@ const rev = (array,target) => {
     }
     return res
 }
-console.log("Ejercicio número 2")
 console.log(rev(array,target))
+console.log("")
 //Algorithm
 //Busqueda Binaria
 //3000//9000//1000000
@@ -76,7 +76,6 @@ for (let j = 1; j < (numeGran); j++) {
     arreGran.push(arreGran[j-1] + 1 + Math.floor(Math.random() * 9));
 }
 //console.log(arreGran)
-console.log("Ejercicio número 3")
 //          0  1  2  3  4  5  6  7   8   9  10  11  12  13  14  15  16
 let temp = [22,42,62,73,84,86,88,123,234,237]
 let encontrado = false;
@@ -175,7 +174,7 @@ function forFor(n) {
         }
     }
 }
-forFor(5)
+forFor(3)
 
 //Search the 3 top suggestions deppending on the input
 function searchSuggestions(repository, customerQuery) {
@@ -384,54 +383,37 @@ for (let i = 1; i <= n; i++) {
 }
 
 
-let ratings = [4,3,5,4,3]
+let ratings = [2,1,3,2,5,4,3,2,1,6,4,3]
 function countDecreasingRatings(ratings) {
     let result = []
     let temp = []
-    for (let i = 0; i < ratings.length; i++) {
-        result.push(ratings[i])
-        for (let j = i; j < ratings.length; j++) {
-            if(ratings[j] != ratings[j+1]+1){
-                if(temp.length > 1){
+    let cont = 0
+    for (let i = 0; i <= ratings.length; i++) {
+        for (let j = i; j <= ratings.length; j++) {
+            temp = ratings
+            temp = temp.slice(i,j)
+            if(temp[0]){
+                if(temp.length === 1){
                     result.push(temp)
+                }else{
+                    cont = 0
+                    for (let k = 1; k < temp.length; k++) {
+                        if(temp[k] === temp[k-1]-1){
+                            cont = cont + 1
+                        }
+                    }
+                    if (cont === temp.length - 1){
+                        result.push(temp)
+                        result.sort()
+                    }
                 }
-                temp=[]
-            }
-            if(!result.includes(temp)){
-                
-                temp.push(ratings[j])
-            }
-
-            if(ratings[j] === ratings[j+1]+1){
-                temp.push(ratings[j+1])
             }
         }
     }
     console.log(result)
-    console.log(result.length)
-    console.log("")
-    console.log("")
-    console.log("")
+    console.log("Hay " + result.length + " subconjuntos de los ratings que descienden")
 }
 countDecreasingRatings(ratings)
-
-/*
-if(ratings[i] === (ratings[i-1]-1) || !ratings[i-1]){
-    temp.push(ratings[i])
-    console.log(i + " - " + temp)
-}
-if(ratings[i] ===(ratings[i-1]-1) && ratings[i] === ratings[i+1]+1){
-
-    temp.push(ratings[i])
-}
-
-if(ratings[i] != ratings[i-1]-1 && !result.includes(temp)){
-    result.push(temp)
-    temp = []
-}
-if (i== ratings.length -1){
-    result.push(temp)
-}*/
 
 
 let password = "test"
