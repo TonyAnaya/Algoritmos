@@ -469,3 +469,38 @@ function pattern(array) {
     }
 }
 pattern(patternArray)
+
+console.log("")
+let texto =" este   es  un        texto  de ejemplo    "
+function espacios(text) {
+    let pal = []
+    let espacios = 0
+    let sobrante = 0
+    let result = ""
+    console.log("'" + text + "'")
+    let palabras = text.split(" ")
+    for (let i = 0; i < text.length; i++) {
+        if(text[i] === " "){
+            espacios = espacios + 1
+        }
+    }
+    for (let j = 0; j < palabras.length; j++) {
+        if(palabras[j] != ""){
+            pal.push(palabras[j])
+        }
+    }
+    sobrante = espacios % (pal.length - 1)
+    let entrepal = (espacios - sobrante) / (pal.length - 1)
+    for (let k = 0; k < (pal.length - 1); k++) {
+        result = result + pal[k]
+        for (let l = 0; l < entrepal; l++) {
+            result = result + " "
+        }
+    }
+    result = result + pal[pal.length-1]
+    for (let m = 0; m < sobrante; m++) {
+        result = result + " "
+    }
+    console.log("'" + result + "'")
+}
+espacios(texto)
