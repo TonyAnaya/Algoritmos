@@ -1,4 +1,4 @@
-//Algorithm
+//  https://leetcode.com/problemset/all///Algorithm
 //aabbccdd -> 2a2b2c2d
 //abcd -> 1a1b1c1d
 //zhhhsssy -> 1z3h3s1y
@@ -63,6 +63,7 @@ const rev = (array,target) => {
 }
 console.log(rev(array,target))
 console.log("")
+
 //Algorithm
 //Busqueda Binaria
 //3000//9000//1000000
