@@ -505,3 +505,7 @@ function espacios(text) {
     console.log("'" + result + "'")
 }
 espacios(texto)
+
+
+
+ //Hola Snake desde Visual
